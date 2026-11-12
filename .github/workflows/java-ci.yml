@@ -24,8 +24,11 @@ jobs:
           mkdir -p out
           javac -d out $(find . -name "*.java")
 
-      - name: 1. Jalankan BilanganGenap
-        run: java -cp out BilanganGenap
+      - name: 1a. Jalankan BilanganGenap (Simulasi NIK Ganjil 2510075 - Metode For)
+        run: echo "2510075" | java -cp out BilanganGenap
+
+      - name: 1b. Jalankan BilanganGenap (Simulasi NIK Genap 2510076 - Metode While)
+        run: echo "2510076" | java -cp out BilanganGenap
 
       - name: 2. Jalankan LuasPersegiPanjang
         run: java -cp out LuasPersegiPanjang
