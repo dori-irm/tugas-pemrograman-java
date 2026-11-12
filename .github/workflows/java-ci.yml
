@@ -19,10 +19,19 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Kompilasi dan Jalankan Program
+      - name: Kompilasi Semua File Java
         run: |
           mkdir -p out
           javac -d out $(find . -name "*.java")
-          java -cp out BilanganGenap
-          java -cp out LuasPersegiPanjang
-          echo "85" | java -cp out hitung_nilai
+
+      - name: 1. Jalankan BilanganGenap
+        run: java -cp out BilanganGenap
+
+      - name: 2. Jalankan LuasPersegiPanjang
+        run: java -cp out LuasPersegiPanjang
+
+      - name: 3. Jalankan hitung_nilai (Input 85)
+        run: echo "85" | java -cp out hitung_nilai
+
+      - name: 4. Jalankan Menu Utama Main.java (Simulasi Menu 1-4)
+        run: printf "1\n2\n3\n92\n4\n" | java -cp out Main
