@@ -1,0 +1,28 @@
+name: Java CI
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build-and-run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Kompilasi dan Jalankan Program
+        run: |
+          mkdir -p out
+          javac -d out $(find . -name "*.java")
+          java -cp out BilanganGenap
+          java -cp out LuasPersegiPanjang
+          echo "85" | java -cp out hitung_nilai
