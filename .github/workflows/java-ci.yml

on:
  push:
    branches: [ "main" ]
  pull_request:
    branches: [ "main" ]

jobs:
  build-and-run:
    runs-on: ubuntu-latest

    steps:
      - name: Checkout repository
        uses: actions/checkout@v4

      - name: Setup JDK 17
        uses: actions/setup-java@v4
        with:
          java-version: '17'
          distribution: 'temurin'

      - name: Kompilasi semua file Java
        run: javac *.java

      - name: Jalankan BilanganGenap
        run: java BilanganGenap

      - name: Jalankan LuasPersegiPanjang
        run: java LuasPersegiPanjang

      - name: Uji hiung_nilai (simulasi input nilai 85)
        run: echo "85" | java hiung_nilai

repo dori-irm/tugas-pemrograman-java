@@ -3,8 +3,7 @@ name: Java CI
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+  workflow_dispatch:
 
 jobs:
   build-and-run:
@@ -20,14 +19,10 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Kompilasi semua file Java
-        run: javac *.java
-
-      - name: Jalankan BilanganGenap
-        run: java BilanganGenap
-
-      - name: Jalankan LuasPersegiPanjang
-        run: java LuasPersegiPanjang
-
-      - name: Uji hitung_nilai (simulasi input nilai 85)
-        run: echo "85" | java hitung_nilai
+      - name: Kompilasi dan Jalankan Program
+        run: |
+          mkdir -p out
+          javac -d out $(find . -name "*.java")
+          java -cp out BilanganGenap
+          java -cp out LuasPersegiPanjang
+          echo "85" | java -cp out hitung_nilai
