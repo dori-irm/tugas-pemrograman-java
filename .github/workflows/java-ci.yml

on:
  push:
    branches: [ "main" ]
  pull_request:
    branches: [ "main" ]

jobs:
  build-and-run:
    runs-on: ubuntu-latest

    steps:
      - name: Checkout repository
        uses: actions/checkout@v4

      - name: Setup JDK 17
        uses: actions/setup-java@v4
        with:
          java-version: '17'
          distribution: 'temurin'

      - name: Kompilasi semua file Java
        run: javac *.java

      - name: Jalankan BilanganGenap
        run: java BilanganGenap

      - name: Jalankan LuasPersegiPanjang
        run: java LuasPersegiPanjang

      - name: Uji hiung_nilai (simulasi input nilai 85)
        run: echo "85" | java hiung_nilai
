@@ -1,0 +1,33 @@
+name: Java CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Kompilasi semua file Java
+        run: javac *.java
+
+      - name: Jalankan BilanganGenap
+        run: java BilanganGenap
+
+      - name: Jalankan LuasPersegiPanjang
+        run: java LuasPersegiPanjang
+
+      - name: Uji hitung_nilai (simulasi input nilai 85)
+        run: echo "85" | java hitung_nilai
