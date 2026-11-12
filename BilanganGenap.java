@@ -1,11 +1,31 @@
+import java.util.Scanner;
+
 public class BilanganGenap {
     public static void main(String[] args) {
-        System.out.println("Bilangan genap antara 1 sampai 100:");
+        Scanner input = new Scanner(System.in);
 
-        for (int i = 1; i <= 100; i++) {
-            if (i % 2 == 0) {
-                System.out.print(i + " ");
+        System.out.print("Masukkan NIK / NIM: ");
+        long nik = input.nextLong();
+
+        if (nik % 2 != 0) {
+            System.out.println("NIK Ganjil -> Menggunakan metode FOR:");
+            for (int i = 1; i <= 100; i++) {
+                if (i % 2 == 0) {
+                    System.out.print(i + " ");
+                }
+            }
+        } else {
+            System.out.println("NIK Genap -> Menggunakan metode WHILE:");
+            int i = 1;
+            while (i <= 100) {
+                if (i % 2 == 0) {
+                    System.out.print(i + " ");
+                }
+                i++;
             }
         }
+
+        System.out.println();
+        input.close();
     }
 }
