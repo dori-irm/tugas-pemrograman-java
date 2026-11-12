@@ -36,12 +36,12 @@ Atau jalankan secara terpisah per file:
 
 ```bash
 # Kompilasi
-javac BilanganGenap.java LuasPersegiPanjang.java hiung_nilai.java
+javac BilanganGenap.java LuasPersegiPanjang.java hitung_nilai.java
 
 # Eksekusi
 java BilanganGenap
 java LuasPersegiPanjang
-java hiung_nilai
+java hitung_nilai
 ```
 
 ### 2. Langsung di Browser (GitHub Codespaces)
